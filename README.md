@@ -29,9 +29,9 @@
 - 域名: ['https://fmxfx.xyz'] 
 - 标题:2024年12月31日分享4个订阅链接，10个高速无偿节点！无偿V2Ray节点，支持Clash、V2rayN等主流软件，秒速连接高速服务器终身无偿VPN服务，解锁科学上网新体验，轻松获取优质代理，无偿梯子，免费梯子，免费代理，永久免费代理。无偿上网梯子，稳定迅速！Shadowsocks，Trojan机场，科学上网翻墙免费节点  |  肥猫想分享 
 - 内容: 
-http://subssr.xfxvpn.me/api/v1/client/subscribe?token=37fd34568d012c4cd4d50c11d3c34d54
+http://subssr.xfxvpn.me/api/v1/client/subscribe?token=ce9ae6c6b04d8a6c912fae992ea3acbb
 http://subssr.xfxvpn.me/api/v1/client/subscribe?token=0c20a4dd868f26dec1cfa41dd0a32260
 http://subssr.xfxvpn.me/api/v1/client/subscribe?token=84775f5f135b63a5937d86775d49856f
-http://subssr.xfxvpn.me/api/v1/client/subscribe?token=ce9ae6c6b04d8a6c912fae992ea3acbb 
-- 更新时间: 2024年12月31日21点46分 
+http://subssr.xfxvpn.me/api/v1/client/subscribe?token=37fd34568d012c4cd4d50c11d3c34d54 
+- 更新时间: 2024年12月31日21点56分 
 结束
