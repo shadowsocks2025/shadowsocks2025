@@ -1,37 +1,66 @@
-# 2025年Free Xray Node，每日更新机场推荐
-## 机场推荐
+import requests
+import json
+import os
+import re
+from datetime import datetime
+import pytz  # 引入时区库
+
+# ====== 文件路径设置 ======
+readme_file = os.path.join("README.md")  # 主仓库根目录下的 README.md 文件
+
+# ====== 获取当前北京时间 ======
+shanghai_tz = pytz.timezone("Asia/Shanghai")
+current_time = datetime.now(shanghai_tz).strftime("%Y年%m月%d日%H点%M分")
+
+# ====== 请求接口获取数据 ======
+import scrapy
+from scrapy.crawler import CrawlerProcess
+
+class MySpider(scrapy.Spider):
+    name = 'myspider'
+    start_urls = ['https://fmxfx.xyz']
+
+    def parse(self, response):
+        # 爬取首页的列表中的第一个链接
+        first_link = response.css('.ect-entry-card a::attr(href)').get()
+        yield response.follow(first_link, self.parse_detail)
+
+    def parse_detail(self, response):
+        # 爬取详情页面的含有"api"的网址
+        pattern = r"http?://(?:[-\w]+\.)+[a-z]{2,6}(?:[-\w ./]+[!&(),=~_?\$]*)(?:subscribe(?:[^\s]*)?)"
+        matches = re.findall(pattern, response.text)
+        data = '\n'.join(set(match.replace('</div><div', '').replace('"', '') for match in matches))
+        print(data)
+        # 获取html内容的title
+        title = response.css('title::text').get()
+        print(title)
+        # 更新域名数字，适配单个域名 167557.xyz
+        updated_content = f" 免费节点分享 \n- 域名: {self.start_urls} \n- 标题:{title} \n- 内容: \n{data} \n- 更新时间: {current_time} \n结束"
+        # ====== 更新 README.md 文件 ======
+        if not os.path.exists(readme_file):
+            raise FileNotFoundError(f"{readme_file} 不存在，请检查路径。")
+
+        with open(readme_file, "r", encoding="utf-8") as file:
+            readme_content = file.read()
+
+        # 替换 README.md 中的更新时间
+        updated_readme_content = re.sub(
+            r" 免费节点分享.*结束",
+            updated_content,
+            readme_content,
+            flags=re.DOTALL
+        )
+
+        # 写回更新内容
+        with open(readme_file, "w", encoding="utf-8") as file:
+            file.write(updated_readme_content)
+
+        print(f"README.md 内容已更新：当前北京时间为 {current_time}")
+
+# 调用爬虫
+
+process = CrawlerProcess()
+process.crawl(MySpider)
+process.start()
 
 
-### 高速机场推荐1【<a href="https://www.xfxssr.me/" target="_blank">小飞侠SSR</a>】
-
-- 小飞侠SSR有定制的Windows客户端，也有按量付费流量包提供。高速中转线路，畅享全球流媒体，全球节点覆盖，采用流行的Shadowsocks翻墙协议，专线节点，高速稳定。费用低至0.33元/天，无视高峰，全天4K秒开，99%流媒体解锁，现在注册即可免费试用！
-
-- 网站注册地址：【<a href="https://www.xfxssr.me/" target="_blank">小飞侠SSR（点击注册）</a>】
-
-### 高速机场推荐2【<a href="https://www.vfast.life/" target="_blank">v速云</a>】
-
-- v速云是一家专注于ssr和V2ray翻墙机场节点。采用国内优质IEPL专线加速，使用SSR+V2ray协议，一键导入支持Clash、Shadowsocks等翻墙插件。线路节点快速稳定，支持netflix网飞等流媒体解锁，支持流畅访问chatgpt、google、Tiktok、youtube、Github等外网。
-- 网站注册地址：【<a href="https://www.vfast.life/" target="_blank">v速云（点击注册）</a>】
-
-### 高速机场推荐3【<a href="https://pkqjiasu.com/" target="_blank">皮卡丘VPN</a>】
-
-- 皮卡丘VPN无视高峰，全天4K秒开，机房遍布全球，IP多多益善，99%流媒体解锁，油管、葫芦、奈菲，小电影丝般顺滑！ IPLC、IEPL中转，点对点专线连接。高速冲浪，科学上网不二选择，现在注册即可免费试用！
-- 网站注册地址：【<a href="https://pkqjiasu.com/" target="_blank">皮卡丘（点击注册）</a>】
-
-### 高速机场推荐4【<a href="https://login.dg5.biz/#/register" target="_blank">狗狗加速</a>】
-
-- 狗狗加速作为第一家上线Hysteria1协议的机场，目前已经全面上线Hysteria2协议；不同于hy1，hy2全面优化了链接速度(0-RTT)，进一步降低延迟；同时使用全新的带宽控制方式；能发挥您带宽的最大潜能！
-- 网站注册地址：【<a href="https://login.dg5.biz/#/register" target="_blank">狗狗加速（点击注册）</a>】
-
-
-
-- 免费节点分享 
-- 域名: ['https://smxfx.com'] 
-- 标题:2024年12月26日,免费V2Ray节点大放送！4个订阅地址 + 10个高速免费节点,支持Clash、V2rayN等主流软件,秒速连接高速服务器终身免费VPN服务，解锁科学上网新体验，轻松获取高质量代理，免费上网梯子，稳定快速！v2ray，clash机场，科学上网翻墙白嫖节点，免费梯子，白嫖梯子，免费代理，永久免费代理  |  山猫想分享 
-- 内容: 
-  http://subssr.xfxvpn.me/api/v1/client/subscribe?token=62ad1feea2594e83ddfd583347edea91
-  http://subssr.xfxvpn.me/api/v1/client/subscribe?token=09c2665836816c49f4070232ea14b65a
-  http://subssr.xfxvpn.me/api/v1/client/subscribe?token=3123695a7964613e91eb411a6d88d43b
-  http://subssr.xfxvpn.me/api/v1/client/subscribe?token=925225726fc862177e8612ffd9d951d4 
-- 更新时间: 2024年12月26日15点39分 
-  结束
