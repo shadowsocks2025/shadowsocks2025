@@ -29,9 +29,9 @@
 - 域名: ['https://fmxfx.xyz'] 
 - 标题:免费分享V2Ray节点！2025年1月16日提供10个高效的免费节点和4个订阅链接，兼容Clash、V2rayN等常用软件。享受瞬时连接的高速服务器，给你终身免费的VPN服务，轻松体验科学上网的新方式，获得优质的代理，畅通无阻的免费上网工具，快速且稳定！包括Shadowsocks，Trojan机场，免费代理服务，翻墙白嫖节点，永久免费代理  |  肥猫想分享 
 - 内容: 
-http://subssr.xfxvpn.me/api/v1/client/subscribe?token=844f7b6d7bc288066276df043ef0b315
 http://subssr.xfxvpn.me/api/v1/client/subscribe?token=94cf85cd3fc3a6854ae6f433575753e1
 http://subssr.xfxvpn.me/api/v1/client/subscribe?token=b57dc991841580dafa2e91801fa34c1f
+http://subssr.xfxvpn.me/api/v1/client/subscribe?token=844f7b6d7bc288066276df043ef0b315
 http://subssr.xfxvpn.me/api/v1/client/subscribe?token=c7f840ccedce1c32cb256c9c76f9c963 
-- 更新时间: 2025年01月16日16点48分 
+- 更新时间: 2025年01月16日16点58分 
 结束
